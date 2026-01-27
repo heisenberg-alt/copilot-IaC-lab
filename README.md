@@ -24,6 +24,19 @@ Dedicated demonstrations showcasing:
 - ♻️ **Refactoring** - Transform and optimize code
 - 💻 **GitHub CLI Integration** - `gh copilot` commands
 
+### 🧩 Copilot SDK & Extensions
+
+Build your own Copilot-powered tools! See [Copilot-SDK/](Copilot-SDK/) for:
+
+| Demo | Type | Description |
+|------|------|-------------|
+| **MCP Servers** | Protocol | Custom tools for VS Code Copilot Chat |
+| **IaC Skillset** | Extension | 3-endpoint skillset (validate/generate/explain) |
+| **Policy Agent** | Extension | Full agent with Azure Policy compliance |
+| **Cost Estimator** | Extension | Real Azure Retail Prices API integration |
+
+**Tech Stack:** Go 1.21+, MCP Protocol, Server-Sent Events, Azure REST APIs
+
 ### 🎮 Interactive CLI Learning Experience
 
 A gamified terminal interface with ASCII art, progress tracking, and celebration animations!
@@ -59,6 +72,8 @@ A gamified terminal interface with ASCII art, progress tracking, and celebration
 | **VS Code** | Latest | [Download](https://code.visualstudio.com/) |
 | **Git** | >= 2.40 | [Download](https://git-scm.com/) |
 | **GitHub CLI** | >= 2.40 | [Install Guide](https://cli.github.com/) |
+| **Go** | >= 1.21 | [Download](https://go.dev/dl/) *(for SDK demos)* |
+| **ngrok** | Latest | [Download](https://ngrok.com/) *(for SDK demos)* |
 
 ### Required VS Code Extensions
 
@@ -154,6 +169,13 @@ copilot-iac/
 │   ├── 03-error-fixing/
 │   ├── 04-refactoring/
 │   └── 05-gh-cli-integration/
+│
+├── Copilot-SDK/                        # 🧩 SDK & Extensions
+│   ├── 01-mcp-servers/                 # MCP Server implementations
+│   ├── 02-iac-skillset/                # Copilot Skillset (3 endpoints)
+│   ├── 03-policy-agent/                # Full Copilot Agent
+│   ├── 04-cost-estimator/              # Azure pricing integration
+│   └── setup-guides/                   # Configuration guides
 │
 └── Solutions/                          # ✅ Reference Solutions
 ```
