@@ -1,0 +1,8 @@
+# =============================================================================
+# Example Terraform Variables File
+# =============================================================================
+# Copy this file to terraform.tfvars and customize the values
+
+environment  = "dev"
+location     = "eastus"
+project_name = "iaclab"
