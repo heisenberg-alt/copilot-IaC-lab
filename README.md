@@ -42,10 +42,10 @@ cd copilot-IaC-lab
 
 | Level | Focus | What You'll Build |
 |:-----:|-------|-------------------|
-| 🟢 1 | Fundamentals | Resource groups, storage accounts, outputs |
-| 🟡 2 | Intermediate | VNets, VMs, App Services |
-| 🟠 3 | Advanced | Modules, remote state, AKS |
-| 🔴 4 | Enterprise | Multi-region, policy-as-code, CI/CD |
+| 1 | Fundamentals | Resource groups, storage accounts, outputs |
+| 2 | Intermediate | VNets, VMs, App Services |
+| 3 | Advanced | Modules, remote state, AKS |
+| 4 | Enterprise | Multi-region, policy-as-code, CI/CD |
 
 Each challenge has: `challenge/` → `solution/` → `README.md` with Copilot prompts
 
