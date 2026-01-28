@@ -1,0 +1,61 @@
+{
+  "name": "iac-helper",
+  "description": "Infrastructure as Code helper for Terraform and Bicep. Provides validation, code generation, and documentation for Azure IaC development.",
+  "version": "1.0.0",
+  "author": "Copilot IaC Lab",
+  "skills": [
+    {
+      "name": "validate",
+      "description": "Validate Terraform or Bicep code for syntax errors, missing required fields, and best practice violations. Supports both full files and code snippets.",
+      "endpoint": "/validate",
+      "parameters": {
+        "code": {
+          "type": "string",
+          "description": "The IaC code to validate",
+          "required": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of IaC (terraform or bicep)",
+          "enum": ["terraform", "bicep"],
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "generate",
+      "description": "Generate Terraform or Bicep code from a natural language description. Creates production-ready templates following Azure best practices.",
+      "endpoint": "/generate",
+      "parameters": {
+        "description": {
+          "type": "string",
+          "description": "Natural language description of the infrastructure to generate",
+          "required": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of IaC to generate (terraform or bicep)",
+          "enum": ["terraform", "bicep"],
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "explain",
+      "description": "Explain Terraform or Bicep resources, their properties, and best practices. Provides documentation links and usage examples.",
+      "endpoint": "/explain",
+      "parameters": {
+        "resource": {
+          "type": "string",
+          "description": "The resource type to explain (e.g., azurerm_kubernetes_cluster, Microsoft.Storage/storageAccounts)",
+          "required": true
+        },
+        "property": {
+          "type": "string",
+          "description": "Optional specific property to explain",
+          "required": false
+        }
+      }
+    }
+  ]
+}

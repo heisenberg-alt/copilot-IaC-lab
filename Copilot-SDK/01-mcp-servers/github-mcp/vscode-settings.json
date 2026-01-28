@@ -1,0 +1,62 @@
+{
+  // =============================================================================
+  // GitHub MCP Server Configuration for VS Code
+  // =============================================================================
+  // 
+  // This file contains the VS Code settings needed to enable the GitHub MCP
+  // Server for Copilot. Copy these settings to your user or workspace settings.
+  //
+  // Prerequisites:
+  // 1. Node.js 18+ installed
+  // 2. GitHub Personal Access Token stored in GITHUB_PERSONAL_ACCESS_TOKEN env var
+  // 3. VS Code 1.85+ with GitHub Copilot extension
+  //
+  // =============================================================================
+
+  // -----------------------------------------------------------------------------
+  // MCP Server Configuration
+  // -----------------------------------------------------------------------------
+  "github.copilot.chat.mcp.servers": {
+    
+    // GitHub MCP Server - Official GitHub integration
+    "github": {
+      // Command to start the MCP server
+      "command": "npx",
+      
+      // Arguments passed to the command
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      
+      // Environment variables for the server
+      "env": {
+        // Reference the token from your environment
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  },
+
+  // -----------------------------------------------------------------------------
+  // Optional: MCP Debugging (uncomment to enable)
+  // -----------------------------------------------------------------------------
+  
+  // Log level for MCP operations (useful for debugging)
+  // "github.copilot.chat.mcp.logLevel": "debug",
+
+  // -----------------------------------------------------------------------------
+  // Recommended Copilot Settings
+  // -----------------------------------------------------------------------------
+  
+  // Enable Copilot Chat
+  "github.copilot.chat.enabled": true,
+  
+  // Enable inline suggestions
+  "github.copilot.enable": {
+    "*": true,
+    "terraform": true,
+    "bicep": true,
+    "json": true,
+    "yaml": true
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "customPolicies": [
+    {
+      "id": "storage-https-required",
+      "name": "Storage Account HTTPS Required",
+      "description": "Storage accounts should enforce HTTPS traffic only",
+      "severity": "high",
+      "resourceType": "azurerm_storage_account",
+      "check": {
+        "property": "enable_https_traffic_only",
+        "operator": "equals",
+        "value": true,
+        "default": false
+      },
+      "remediation": "Set enable_https_traffic_only = true",
+      "documentation": "https://learn.microsoft.com/azure/storage/common/storage-require-secure-transfer"
+    },
+    {
+      "id": "storage-tls-version",
+      "name": "Storage Account TLS 1.2",
+      "description": "Storage accounts should use TLS 1.2 minimum",
+      "severity": "high",
+      "resourceType": "azurerm_storage_account",
+      "check": {
+        "property": "min_tls_version",
+        "operator": "equals",
+        "value": "TLS1_2"
+      },
+      "remediation": "Set min_tls_version = \"TLS1_2\"",
+      "documentation": "https://learn.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version"
+    },
+    {
+      "id": "storage-public-access",
+      "name": "Storage Account No Public Blob Access",
+      "description": "Storage accounts should disable public blob access",
+      "severity": "high",
+      "resourceType": "azurerm_storage_account",
+      "check": {
+        "property": "allow_blob_public_access",
+        "operator": "equals",
+        "value": false,
+        "default": true
+      },
+      "remediation": "Set allow_blob_public_access = false",
+      "documentation": "https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent"
+    },
+    {
+      "id": "aks-rbac-enabled",
+      "name": "AKS RBAC Enabled",
+      "description": "AKS clusters should have RBAC enabled",
+      "severity": "high",
+      "resourceType": "azurerm_kubernetes_cluster",
+      "check": {
+        "property": "role_based_access_control_enabled",
+        "operator": "equals",
+        "value": true,
+        "default": false
+      },
+      "remediation": "Set role_based_access_control_enabled = true",
+      "documentation": "https://learn.microsoft.com/azure/aks/manage-azure-rbac"
+    },
+    {
+      "id": "aks-network-policy",
+      "name": "AKS Network Policy Configured",
+      "description": "AKS clusters should have network policy enabled",
+      "severity": "medium",
+      "resourceType": "azurerm_kubernetes_cluster",
+      "check": {
+        "property": "network_profile.network_policy",
+        "operator": "exists"
+      },
+      "remediation": "Configure network_profile with network_policy = \"azure\" or \"calico\"",
+      "documentation": "https://learn.microsoft.com/azure/aks/use-network-policies"
+    },
+    {
+      "id": "aks-managed-identity",
+      "name": "AKS Managed Identity",
+      "description": "AKS clusters should use managed identity",
+      "severity": "high",
+      "resourceType": "azurerm_kubernetes_cluster",
+      "check": {
+        "property": "identity.type",
+        "operator": "equals",
+        "value": "SystemAssigned"
+      },
+      "remediation": "Configure identity block with type = \"SystemAssigned\"",
+      "documentation": "https://learn.microsoft.com/azure/aks/use-managed-identity"
+    },
+    {
+      "id": "vm-managed-disks",
+      "name": "VM Managed Disks",
+      "description": "Virtual machines should use managed disks",
+      "severity": "medium",
+      "resourceType": "azurerm_virtual_machine",
+      "check": {
+        "property": "storage_os_disk.managed_disk_type",
+        "operator": "exists"
+      },
+      "remediation": "Use managed disks by specifying managed_disk_type",
+      "documentation": "https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview"
+    },
+    {
+      "id": "keyvault-purge-protection",
+      "name": "Key Vault Purge Protection",
+      "description": "Key Vaults should have purge protection enabled",
+      "severity": "high",
+      "resourceType": "azurerm_key_vault",
+      "check": {
+        "property": "purge_protection_enabled",
+        "operator": "equals",
+        "value": true
+      },
+      "remediation": "Set purge_protection_enabled = true",
+      "documentation": "https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview"
+    },
+    {
+      "id": "keyvault-rbac",
+      "name": "Key Vault RBAC Authorization",
+      "description": "Key Vaults should use RBAC for authorization",
+      "severity": "medium",
+      "resourceType": "azurerm_key_vault",
+      "check": {
+        "property": "enable_rbac_authorization",
+        "operator": "equals",
+        "value": true
+      },
+      "remediation": "Set enable_rbac_authorization = true",
+      "documentation": "https://learn.microsoft.com/azure/key-vault/general/rbac-guide"
+    },
+    {
+      "id": "sql-tde-enabled",
+      "name": "SQL TDE Enabled",
+      "description": "SQL databases should have transparent data encryption enabled",
+      "severity": "high",
+      "resourceType": "azurerm_mssql_database",
+      "check": {
+        "property": "transparent_data_encryption_enabled",
+        "operator": "equals",
+        "value": true,
+        "default": true
+      },
+      "remediation": "Ensure transparent_data_encryption_enabled = true (default)",
+      "documentation": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview"
+    }
+  ],
+  "severityLevels": {
+    "critical": {
+      "color": "🔴",
+      "description": "Must fix immediately - security vulnerability"
+    },
+    "high": {
+      "color": "🟠",
+      "description": "Should fix soon - significant security risk"
+    },
+    "medium": {
+      "color": "🟡",
+      "description": "Should fix - best practice violation"
+    },
+    "low": {
+      "color": "🟢",
+      "description": "Consider fixing - minor improvement"
+    }
+  }
+}
