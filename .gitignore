@@ -19,3 +19,10 @@ Thumbs.db
 
 # Logs
 *.log
+
+Copilot-SDK/enterprise/
+
+
+*.exe
+*.exe~
+
